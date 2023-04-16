@@ -1,0 +1,1 @@
+Nếu bạn gặp khó khăn khi triển khai tính năng này, hãy cung cấp cho tôi mã nguồn của bạn, tôi sẽ cố gắng giúp bạn tạo ra tính năng mới này trong trò chơi Flappy Bird của bạn.
