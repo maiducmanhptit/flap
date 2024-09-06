@@ -1,22 +1,13 @@
-15	Monitoring 2024	2024-15.Anomaly Detection ATTCK T1053 Scheduled Task Correlation	"APPLY 053.Anomaly Detection ATTCK T1053 Scheduled Task Correlation on events which are detected by the LOCAL system
+19	Monitoring 2024	2024-19.Anomaly_Detection_ATTCK_T1547_002_Authentication_Package_Ver1	"APPLY 28.Anomaly_Detection_ATTCK_T1547_002_Authentication_Package_Ver1 on events which are detected by the LOCAL system
 AND when the event(s) were detected by one or more of Microsoft Windows Security Event Log
-AND when an event matches any of the following B53-1a.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation, B53-1b.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation, B53-1c.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation, B53-1d.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation, B53-2.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation, B53-3a.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation, B53-3b.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation, B53-4.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation
-AND when the event matches ""Command"" not ILIKE '""C:\Program Files\Symantec\Symantec Endpoint Protection\14.3.10148.8000.105\Bin64\SymErr.exe""' AND ""Command"" not ILIKE 'C:\Windows\CCM\ccmeval.exe' AQL filter query"
+AND when an event matches any of the following 28.BB-1.Anomaly_Detection_ATTCK_T1547_002_Authentication_Package_Ver1, 28.BB-2.Anomaly_Detection_ATTCK_T1547_002_Authentication_Package_Ver1"
 
-B53-1a.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation	"APPLY B53-1a.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation on events which are detected by the undefined system
-AND when the event matches Command (custom) contains any of \at.exe "
-B53-1b.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation	"APPLY B53-1b.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation on events which are detected by the undefined system
-AND when the event matches Process Path (custom) contains any of \at.exe"
-B53-1c.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation	"APPLY B53-1c.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation on events which are detected by the undefined system
-AND when the event matches Process Name (custom) contains any of \at.exe"
-B53-1d.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation	"APPLY B53-1d.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation on events which are detected by the undefined system
-AND when the event matches Command (custom) contains all of [schtasks or /create]"
-B53-2.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation	"APPLY B53-2.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation on events which are detected by the undefined system
-AND when the event matches Event ID (custom) is any of 4698"
-B53-3a.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation	"APPLY B53-3a.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation on events which are detected by the undefined system
-AND when the event matches Command (custom) contains any of Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\At"
-B53-3b.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation	"APPLY B53-3b.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation on events which are detected by the undefined system
-AND when the event matches Target Process Path (custom) contains any of Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\At"
-B53-4.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation	"APPLY B53-4.Anomaly Detection ATTCK T1053 T1053 Scheduled Task Correlation on events which are detected by the LOCAL system
-AND when the event matches Event ID is any of [4656 or 4663]
-AND when the event matches Object Name (custom) contains any of Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\At"
+
+28.BB-1.Anomaly_Detection_ATTCK_T1547_002_Authentication_Package_Ver1	"APPLY 28.BB-1.Anomaly_Detection_ATTCK_T1547_002_Authentication_Package_Ver1 on events which are detected by the LOCAL system
+AND when the event matches ""Command"" IMATCHES '(?i).*\\system\\.*\\control\\lsa\\authentication packages' OR Command IMATCHES '(?i).*\\SOFTWARE\\Microsoft\\Windows NT\\*\\Image File Execution Options*LSASS.exe' OR ""Target Object"" IMATCHES '(?i).*\\system\\.*\\control\\lsa\\authentication packages' OR ""Target Object"" IMATCHES '(?i).*\\SOFTWARE\\Microsoft\\Windows NT\\*\\Image File Execution Options*LSASS.exe' OR ""Object Name"" IMATCHES '(?i).*\\system\\.*\\control\\lsa\\authentication packages' OR ""Object Name"" IMATCHES '(?i).*\\SOFTWARE\\Microsoft\\Windows NT\\*\\Image File Execution Options*LSASS.exe' AQL filter query"
+28.BB-2.Anomaly_Detection_ATTCK_T1547_002_Authentication_Package_Ver1	"APPLY 28.BB-2.Anomaly_Detection_ATTCK_T1547_002_Authentication_Package_Ver1 on events which are detected by the LOCAL system
+AND when the event matches Event ID is any of 4688
+AND when the event matches Process Path (custom) contains any of reg.exe
+AND when the event matches Command (custom) contains any of add, Command (custom) contains any of authentication packages
+AND when the event matches ""Command"" ILIKE '%.dll%' OR ""Command"" ILIKE '%.exe%' AQL filter query
+AND when the event matches ""Command"" iMATCHES '(?i).*HK(LM|EY_LOCAL_MACHINE)\\SYSTEM\\CurrentControlSet\\Control\\Lsa?.*' OR Command iMATCHES '(?i).*HK(LM|EY_LOCAL_MACHINE)\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Image File Execution Options?.*' AQL filter query"
