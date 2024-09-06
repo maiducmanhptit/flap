@@ -1,0 +1,21 @@
+14	Monitoring 2024	2024-14.Anomaly Detection ATTCK T1070_001 Clear Windows Event Logs Correlation	"APPLY 050.Anomaly Detection ATTCK T1070_001 Clear Windows Event Logs Correlation on events which are detected by the LOCAL system
+AND when the event(s) were detected by one or more of Microsoft Windows Security Event Log
+AND when an event matches any of the following B50-1.Anomaly Detection ATTCK T1070_001_Clear Windows Event Logs Correlation: HID1, B50-2.Anomaly Detection ATTCK T1070_001_Clear Windows Event Logs Correlation: HID1, B50-5.Anomaly Detection ATTCK T1070_001_Clear Windows Event Logs Correlation: HID2, B50-6.Anomaly Detection ATTCK T1070_001_Clear Windows Event Logs Correlation, B50-7.Anomaly Detection ATTCK T1070_001_Clear Windows Event Logs Correlation"
+
+B50-1.Anomaly Detection ATTCK T1070_001_Clear Windows Event Logs Correlation: HID1	"APPLY B50-1.Anomaly Detection ATTCK T1070_001_Clear Windows Event Logs Correlation: HID1 on events which are detected by the LOCAL system
+AND when the event matches (""Event ID"" = 4688 OR ""Event ID"" = 1) AQL filter query
+AND when the event matches ""Command"" ILIKE '%clear-eventlog%' OR Command IMATCHES '(?i).*wevtutil.*(cl|clear-log).*(Application|system|security).*' AQL filter query"
+
+B50-2.Anomaly Detection ATTCK T1070_001_Clear Windows Event Logs Correlation: HID1	"APPLY B50-2.Anomaly Detection ATTCK T1070_001_Clear Windows Event Logs Correlation: HID1 on events which are detected by the LOCAL system
+AND when the event matches Command (custom) matches any of expressions (?i).*Clear-EventLog.*"
+
+B50-5.Anomaly Detection ATTCK T1070_001_Clear Windows Event Logs Correlation: HID2	"APPLY B50-5.Anomaly Detection ATTCK T1070_001_Clear Windows Event Logs Correlation: HID2 on events which are detected by the LOCAL system
+AND when the event matches Accesses (custom) contains any of delete
+AND when the event matches File Directory (custom) matches any of expressions [(?i)C:\\windows\\system32\\winevt\\logs.* or (?i)C:\\Windows\\system32\\config\\(sam|security|system)], File Path (custom) matches any of expressions [(?i)C:\\windows\\system32\\winevt\\logs.*  or (?i)C:\\Windows\\system32\\config\\(sam|security|system)], Command (custom) matches any of expressions [(?i)C:\\Windows\\system32\\config\\(sam|security|system) or (?i)C:\\windows\\system32\\winevt\\logs.* ], File (custom) matches any of expressions [(?i)C:\\windows\\system32\\winevt\\logs.*  or (?i)C:\\Windows\\system32\\config\\(sam|security|system)], File  Object Name (custom) matches any of expressions [(?i)C:\\Windows\\system32\\config\\(sam|security|system) or (?i)C:\\windows\\system32\\winevt\\logs.* ]"
+
+B50-6.Anomaly Detection ATTCK T1070_001_Clear Windows Event Logs Correlation	"APPLY B50-6.Anomaly Detection ATTCK T1070_001_Clear Windows Event Logs Correlation on events which are detected by the LOCAL system
+AND when the event matches Event ID is any of [104 or 1102]"
+
+B50-7.Anomaly Detection ATTCK T1070_001_Clear Windows Event Logs Correlation	"APPLY B50-7.Anomaly Detection ATTCK T1070_001_Clear Windows Event Logs Correlation on events which are detected by the LOCAL system
+AND when the event(s) were detected by one or more of Microsoft Windows Security Event Log
+AND when the event matches ""Message"" ILIKE '%log file was cleared%' AQL filter query"
